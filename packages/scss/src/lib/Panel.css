@@ -99,10 +99,7 @@
  * styles for components.
  *
  */
-.dse-button-container {
+.dse-panel-container {
   display: flex;
-  background: var(--dse-btn-primary-bg, #5ece7b);
-  color: var(--dse-btn-primary-color, #fff);
-  border: none;
-  padding: 0.25rem;
+  position: absolute;
 }
