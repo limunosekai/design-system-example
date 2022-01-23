@@ -1,7 +1,7 @@
 {
   "name": "design-system-react",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "lib/index.js",
   "license": "MIT",
   "devDependencies": {
     "@types/react": "^17.0.38",
