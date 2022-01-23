@@ -13,6 +13,7 @@
     "rollup-plugin-typescript2": "^0.31.1"
   },
   "scripts": {
-    "build": "rollup -c"
+    "build": "rollup -c",
+    "dev": "yarn build --watch"
   }
 }
