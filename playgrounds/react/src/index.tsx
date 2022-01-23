@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import { Button } from 'design-system-react';
-import 'design-system-example/lib/Button.css';
+import { Color } from 'design-system-react';
+import 'design-system-example/lib/Utilities.css';
 
 ReactDOM.render(
-    <Button label="example" />,
+    <Color hexCode="#000" />,
     document.querySelector('#root')
 );
