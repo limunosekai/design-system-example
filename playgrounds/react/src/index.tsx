@@ -22,7 +22,7 @@ const options = [{
 
 ReactDOM.render(
     <div style={{ padding: '40px' }}>
-        <Select options={options}/>
+        <Select options={options} />
     </div>,
     document.querySelector('#root')
 );
