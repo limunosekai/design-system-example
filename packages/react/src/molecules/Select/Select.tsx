@@ -1,6 +1,11 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { KeyboardEventHandler, useEffect, useRef, useState } from 'react';
 import Text from '../../atoms/Text';
 
+const KEY_CODES = {
+  ENTER: 13,
+  SPACE: 32,
+  DOWN_ARROW: 40,
+}
 interface SelectOption {
   label: string,
   value: string,
@@ -50,15 +55,23 @@ const Select: React.FunctionComponent<SelectProps> = ({ options = [], label = 'P
     selectedOption = options[selectedIndex];
   }
 
+  const onButtonKeyDown: KeyboardEventHandler = (e) => {
+    e.preventDefault();
+
+    if([KEY_CODES.ENTER, KEY_CODES.SPACE, KEY_CODES.DOWN_ARROW].includes(e.keyCode)) {
+      setIsOpen(true);
+    }
+  }
+
   return (
     <div className="dse-select">
-      <button ref={labelRef} className="dse-select__label" onClick={() => onLabelClick()}>
+      <button onKeyDown={onButtonKeyDown} aria-controls="dse-select-list" aria-haspopup={true} aria-expanded={isOpen ? true : undefined} ref={labelRef} className="dse-select__label" onClick={() => onLabelClick()}>
         <Text>{selectedIndex === null ? label : selectedOption?.label}</Text>
         <svg className={`dse-select__caret ${isOpen ? 'dse-select__caret--open' : 'dse-select__caret--closed'}`} width='1rem' height='1rem' fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} viewBox="0 0 24 24" stroke="currentColor"><path d="M19 9l-7 7-7-7" /></svg>
       </button>
 
       {isOpen && (
-        <ul style={{ top: overlayTop }} className="dse-select__overlay">
+        <ul role="menu" id="dse-select-list" style={{ top: overlayTop }} className="dse-select__overlay">
           {options.map((option, optionIndex) => {
             const isSelected = selectedIndex === optionIndex;
 
