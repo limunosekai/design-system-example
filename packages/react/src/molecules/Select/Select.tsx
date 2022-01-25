@@ -5,6 +5,8 @@ const KEY_CODES = {
   ENTER: 13,
   SPACE: 32,
   DOWN_ARROW: 40,
+  UP_ARROW: 38,
+  ESC: 27,
 }
 interface SelectOption {
   label: string,
@@ -22,6 +24,26 @@ interface SelectProps {
   options?: SelectOption[],
   label?: string,
   renderOption?: (props: RenderOptionProps) => React.ReactNode,
+}
+
+const getNextOptionIndex = (currentIndex: number | null, options: Array<SelectOption>) => {
+  if (currentIndex === null) {
+    return 0;
+  }
+  if (currentIndex === options.length - 1) {
+    return 0;
+  }
+  return currentIndex + 1;
+}
+
+const getPreviousOptionIndex = (currentIndex: number | null, options: Array<SelectOption>) => {
+  if (currentIndex === null) {
+    return 0;
+  }
+  if (currentIndex === 0) {
+    return options.length - 1;
+  }
+  return currentIndex - 1;
 }
 
 const Select: React.FunctionComponent<SelectProps> = ({ options = [], label = 'Please select one option', onOptionSelected: handler, renderOption }) => {
@@ -84,7 +106,26 @@ const Select: React.FunctionComponent<SelectProps> = ({ options = [], label = 'P
       }
     }
   
-  }, [isOpen])
+  }, [isOpen, highlightedIndex]);
+
+  const onOptionKeyDown: KeyboardEventHandler = (e) => {
+    if (e.keyCode === KEY_CODES.ESC) {
+      setIsOpen(false);
+      return;
+    }
+
+    if (e.keyCode === KEY_CODES.DOWN_ARROW) {
+      highlightItem(getNextOptionIndex(highlightedIndex, options));
+    }
+
+    if (e.keyCode === KEY_CODES.UP_ARROW) {
+      highlightItem(getPreviousOptionIndex(highlightedIndex, options));
+    }
+
+    if (e.keyCode === KEY_CODES.ENTER) {
+      onOptionSelected(options[highlightedIndex!], highlightedIndex!);
+    }
+  }
 
   return (
     <div className="dse-select">
@@ -107,6 +148,10 @@ const Select: React.FunctionComponent<SelectProps> = ({ options = [], label = 'P
               getOptionRecommendedProps: (overrideProps = {}) => {
                 return {
                   ref,
+                  role: 'menuitemradio',
+                  'aria-label': option.label,
+                  'aria-checked': isSelected ? true : undefined,
+                  onKeyDown: onOptionKeyDown,
                   tabIndex: isHighLighted ? -1 : 0,
                   className: `dse-select__option ${isSelected && 'dse-select__option--selected'} ${isHighLighted && 'dse-select__option--highlighted'}`,
                   onMouseEnter: () => highlightItem(optionIndex),
