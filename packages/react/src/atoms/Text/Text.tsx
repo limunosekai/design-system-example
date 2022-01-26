@@ -1,5 +1,5 @@
 import React from 'react';
-import { FontSize } from 'design-system-foundation';
+import { FontSize } from '@limunosekai/dse-foundation';
 
 export interface TextProps {
     size?: keyof typeof FontSize;

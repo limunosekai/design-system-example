@@ -15,5 +15,5 @@ export default {
     },
     plugins: [Ts()],
     preserveModules: true,
-    external: ['react', 'design-system-foundation']
+    external: ['react', '@limunosekai/dse-foundation']
 }

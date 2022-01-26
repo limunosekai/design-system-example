@@ -2,7 +2,7 @@ import React from 'react';
 import Select from './Select';
 import { withA11y } from '@storybook/addon-a11y';
 
-import 'design-system-example/lib/Select.css';
+import '@limunosekai/dse-scss/lib/Select.css';
 
 const options = [{
   label: '1',

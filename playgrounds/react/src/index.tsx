@@ -1,13 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import { Select } from 'design-system-react';
+import { Select } from '@limunosekai/dse-react';
 
-import 'design-system-example/lib/Utilities.css';
-import 'design-system-example/lib/Text.css';
-import 'design-system-example/lib/Margin.css';
-import 'design-system-example/lib/Select.css';
-import 'design-system-example/lib/global.css';
+import '@limunosekai/dse-scss/lib/Utilities.css';
+import '@limunosekai/dse-scss/lib/Text.css';
+import '@limunosekai/dse-scss/lib/Margin.css';
+import '@limunosekai/dse-scss/lib/Select.css';
+import '@limunosekai/dse-scss/lib/global.css';
 
 const options = [{
     label: '1',

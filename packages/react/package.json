@@ -1,6 +1,6 @@
 {
-  "name": "design-system-react",
-  "version": "0.1.0",
+  "name": "@limunosekai/dse-react",
+  "version": "0.2.0",
   "main": "lib/index.js",
   "license": "MIT",
   "devDependencies": {
@@ -37,5 +37,6 @@
   },
   "publishConfig": {
     "access": "public"
-  }
+  },
+  "gitHead": "0a07aa3bf214a34c771ddfac1ffaae6b302864a0"
 }
