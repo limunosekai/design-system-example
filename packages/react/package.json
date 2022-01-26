@@ -16,6 +16,7 @@
     "@types/jest": "^27.4.0",
     "@types/react": "^17.0.38",
     "babel-loader": "8.1.0",
+    "chromatic": "^6.4.1",
     "jest": "^27.4.7",
     "react": "^17.0.2",
     "typescript": "^4.5.5"
@@ -31,6 +32,7 @@
     "test": "jest --verbose",
     "test:watch": "yarn test --watch",
     "start-storybook": "start-storybook",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "chromatic": "chromatic --project-token=4ffc36b62ab8"
   }
 }
