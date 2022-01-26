@@ -34,6 +34,7 @@
   &__overlay {
     @include padding('none');
     @include margin('none');
+    display: none;
 
     border: 1px solid $form-border-color;
     background-color: $form-bg-color;
@@ -43,6 +44,10 @@
     position: absolute;
     width: 100%;
     list-style-type: none;
+
+    &--open {
+      display: block;
+    }
   }
 
   &__option {

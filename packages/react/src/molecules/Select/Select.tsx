@@ -134,8 +134,8 @@ const Select: React.FunctionComponent<SelectProps> = ({ options = [], label = 'P
         <svg className={`dse-select__caret ${isOpen ? 'dse-select__caret--open' : 'dse-select__caret--closed'}`} width='1rem' height='1rem' fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} viewBox="0 0 24 24" stroke="currentColor"><path d="M19 9l-7 7-7-7" /></svg>
       </button>
 
-      {isOpen && (
-        <ul role="menu" id="dse-select-list" style={{ top: overlayTop }} className="dse-select__overlay">
+      {(
+        <ul role="menu" id="dse-select-list" style={{ top: overlayTop }} className={`dse-select__overlay ${isOpen && 'dse-select__overlay--open'}`}>
           {options.map((option, optionIndex) => {
             const isSelected = selectedIndex === optionIndex;
             const isHighLighted = highlightedIndex === optionIndex;
