@@ -19,7 +19,8 @@ jobs:
       - name: Build packages
         run: yarn build
       - name: Visual regression test
+        with: 
+          fetch-depth: 0 
         env:
-        with: fetch-depth: 0 
           CHROMATIC_TOKEN: ${{ secrets.CHROMATIC_TOKEN }}
         run: yarn test:chromatic
