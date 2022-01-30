@@ -6,8 +6,11 @@
   "author": "limunosekai <powerlsh0103@gmail.com>",
   "license": "MIT",
   "devDependencies": {
+    "@commitlint/cli": "^16.1.0",
+    "@commitlint/config-conventional": "^16.0.0",
     "commitizen": "^4.2.4",
     "cz-conventional-changelog": "^3.3.0",
+    "husky": "4.2.5",
     "lerna": "^4.0.0"
   },
   "private": true,
@@ -29,6 +32,11 @@
   "config": {
     "commitizen": {
       "path": "cz-conventional-changelog"
+    }
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
   }
 }
